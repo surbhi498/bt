@@ -36,8 +36,9 @@ if(root == NULL)
 return true;
 
 }
-int b = abs(root->left-root->right);
-if(b>1)
+int lh = height(root->left);
+int  rh = height(root->right);
+if(abs(lh-rh)>1)
 {
 return false;
 
