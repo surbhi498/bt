@@ -1,0 +1,96 @@
+Construct Tree from Postorder and Inorder
+Send Feedback
+Given Postorder and Inorder traversal of a binary tree, create the binary tree associated with the traversals.You just need to construct the tree and return the root.
+Note: Assume binary tree contains only unique elements.
+Input format :
+
+Line 1 : n (Total number of nodes in binary tree)
+
+Line 2 : Post order traversal
+
+Line 3 : Inorder Traversal
+
+Output Format :
+
+Elements are printed level wise, each level in new line (separated by space).
+
+Sample Input :
+8
+8 4 5 2 6 7 3 1
+4 8 2 5 1 6 3 7
+Sample Output :
+1 
+2 3 
+4 5 6 7 
+8
+// Following is the Binary Tree node structure
+/**************
+class BinaryTreeNode {
+    public : 
+    T data;
+    BinaryTreeNode<T> *left;
+    BinaryTreeNode<T> *right;
+
+    BinaryTreeNode(T data) {
+        this -> data = data;
+        left = NULL;
+        right = NULL;
+    }
+};
+***************/
+
+
+int search(int *inorder, int s, int t, int data)
+{
+
+    for(int i =s;i<=t;i++)    
+    {
+
+        if(inorder[i]==data)  
+        {
+
+            return i;
+
+
+        } 
+
+
+    }    
+
+
+
+
+}    
+
+BinaryTreeNode<int>* buildTree1(int *postorder, int st, int *inorder, int end,int pind) {
+    static int preindex = end;
+
+    if(st>end)   
+    {
+
+        return NULL;    
+
+    }   
+
+    BinaryTreeNode<int> *root =  new  BinaryTreeNode<int>(postorder[pind--]);  
+    //(*pind)--;    
+    if(st == end){
+
+        return root;    
+
+
+    }   
+
+    int inIndex = search(inorder, st, end, root->data);      
+    root->left =  buildTree1(postorder,  st, inorder,  inIndex-1,pind);   
+    root->right =  buildTree1(postorder, inIndex+1, inorder, end,pind);     
+
+    return root;    
+
+
+}
+
+BinaryTreeNode<int>* getTreeFromPostorderAndInorder(int *postorder, int postLength, int *inorder, int inLength) {
+    // Write your code here
+    return(buildTree1( postorder, 0, inorder, (inLength-1),(postLength-1)));
+}
