@@ -11,3 +11,25 @@ Sample Input 2 :
 1 2 3 -1 -1 -1 -1
 Sample Output 2 :
 true
+bool isBalanced(BinaryTreeNode *root) {
+// Write your code here
+if(root == NULL)
+{
+
+return true;
+
+}
+int b = abs(root->left-root->right);
+if(b>1)
+{
+return false;
+
+}
+else{
+
+bool a = isBalanced(root->left);
+bool b = isBalanced(root-right);
+
+}
+return(a && b);
+}
