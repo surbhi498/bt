@@ -27,7 +27,10 @@ void printLevelWise(BinaryTreeNode<int> *root) {
      * Print output and don't return it.
      * Taking input is handled automatically.
      */
-     
+     if(root == NULL)
+     {
+     return;
+     }
     queue<BinaryTreeNode<int>*> pendingNodes;
     pendingNodes.push(root);
     while(pendingNodes.size() != 0){
