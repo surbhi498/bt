@@ -16,5 +16,54 @@ Sample Output :
 9
 vector<node<int>*> createLLForEachLevel(BinaryTreeNode<int> *root) {
     // Write your code here
+    queue<BinaryTreeNode<int>*> pend;
+    BinaryTreeNode<int> *head = NULL;
+    BinaryTreeNode<int> *tail = NULL;
+    vector<BinaryTreeNode<int>> *bn;
+    pend.push(root);
+    pend.push(-1);
+    while(!q.empty())
+    {
+    
+    BinaryTreeNode<int> *front = pend.front();
+    pend.pop();
+    if(front != -1)
+    {
+    if(head == NULL){
+    head=front;
+    tail = front;
+    }
+    else{
+    tail->next = front;
+    tail = tail->next;
+    }
+    //bn.push_back(head);
+    
+    if(front->left)
+    {
+    
+    pend.push(front->left);
+    
+    
+    
+    }
+    
+    if(front->right)
+    {
+    
+    pend.push(front->right);
+    
+    }
+   // bn.push_back(head);
+    }
+    else{
+    bn.push_back(head);
+    pend.push(-1);
+    head = NULL;
+    tail = NULL;
+  } 
+    
+    }
+    
 
 }
