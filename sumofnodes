@@ -9,5 +9,15 @@ Sample Output :
 35
 int sumOfAllNodes(BinaryTreeNode<int>* root) {
     // Write your code here
+    int sum = 0;
+    if(root == NULL)
+    {
+    return 0;
+    
+    }
+
+ sum += root->data + sumOfAllNodes(root->left) +  sumOfAllNodes(root->right); 
+return sum;
+
 
 }
