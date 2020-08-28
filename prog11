@@ -37,4 +37,29 @@ true
 bool isNodePresent(BinaryTreeNode<int> *root, int x)
 {
     //Write your code here
+    if(root == NULL)
+    {
+    return false;
+    }
+    if(root->data == x)
+    {
+    return true;
+    
+    }
+    else{
+    if(root->left){
+   bool bp = isNodePresent(root->left,x);
+   if(bp) return bp;
+   }
+   if(root->right)
+   {
+   bool bp1 = isNodePresent(root->right,x);
+    if(bp1) return bp1;
+    }
+    
+    }
+    
+    //return false;
+    
+    
 }
