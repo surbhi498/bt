@@ -28,7 +28,7 @@ void printLevelATNewLine(BinaryTreeNode<int> *root) {
     return;
     
     }
-    queue<Node*> q;
+    queue<BinaryTreeNode<int>*> q;
     
     q.push(root);
     q.push(NULL);
