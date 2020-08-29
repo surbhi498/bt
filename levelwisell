@@ -17,17 +17,17 @@ Sample Output :
 vector<node<int>*> createLLForEachLevel(BinaryTreeNode<int> *root) {
     // Write your code here
     queue<BinaryTreeNode<int>*> pend;
-    BinaryTreeNode<int> *head = NULL;
-    BinaryTreeNode<int> *tail = NULL;
-    vector<BinaryTreeNode<int>> *bn;
+    node<int> *head = NULL;
+    node<int> *tail = NULL;
+    vector<node<int>*> bn;
     pend.push(root);
-    pend.push(-1);
+    pend.push(NULL);
     while(!q.empty())
     {
     
-    BinaryTreeNode<int> *front = pend.front();
+    BinaryTreeNode<int> *temp = pend.front();
     pend.pop();
-    if(front != -1)
+    if(temp != -1)
     {
     if(head == NULL){
     head=front;
@@ -39,31 +39,36 @@ vector<node<int>*> createLLForEachLevel(BinaryTreeNode<int> *root) {
     }
     //bn.push_back(head);
     
-    if(front->left)
+    if(temp->left != NULL)
     {
     
-    pend.push(front->left);
+    pend.push(temp->left);
     
     
     
     }
     
-    if(front->right)
+    if(temp->right != NULL)
     {
     
-    pend.push(front->right);
+    pend.push(temp->right);
     
     }
    // bn.push_back(head);
     }
     else{
     bn.push_back(head);
-    pend.push(-1);
+    if(pend.empty())
+    {
+    break;
+    
+    }
+    pend.push(NULL);
     head = NULL;
     tail = NULL;
   } 
     
     }
-    
+    return bn;
 
 }
