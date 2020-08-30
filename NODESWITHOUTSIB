@@ -12,5 +12,16 @@ Sample Output :
 9    
 void nodesWithoutSibling(BinaryTreeNode<int> *root) {
     // Write your code here
+if(!root)
+return;
+if(root->left && root->right == NULL){
+cout<<root->left->data<<endl;
+}
+else if(root->left == NULL && root->right){
+cout<<root->right->data<<endl;
+}
+nodesWithoutSibling(root->left);
+nodesWithoutSibling(root->right);
+//return v;
 
 }
